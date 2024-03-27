@@ -1,6 +1,5 @@
 import random
 
-
 def montyHallImpriendo(changeDoor):
     
     puertas = ["Cabra", "Cabra", "Cabra"]
@@ -12,10 +11,16 @@ def montyHallImpriendo(changeDoor):
     puertaParticipante = random.randint(0, 2)
     print(f"Posición elegida por el participante: {puertaParticipante + 1}")
     
+    # Si el participante escogió la puerta donde está el auto, hago que el 
+    # presentador escoja al azar una puerta distinta a la del participante
     if puertas[puertaParticipante] == "Auto":
         puertaPresentador = random.randint(0, 2)
         while puertaPresentador == puertaParticipante:
             puertaPresentador = random.randint(0, 2)
+    
+    # Si el participante no escogió la puerta donde esta el auto, hago que
+    # el presentador escoja la puerta donde no está el auto y que sea 
+    # distinta a la del participante.
     else:
         for i in range(len(puertas)):
             if i != puertaParticipante and puertas[i] != "Auto":
@@ -23,6 +28,8 @@ def montyHallImpriendo(changeDoor):
     
     print(f"Puerta abierta por el presentador: {puertaPresentador + 1}")
     
+    # Si el participante quiere cambiar puerta, busco la puerta que no ha sido
+    # escogida por el presentador ni por el participante
     if changeDoor == True:
         for i in range(len(puertas)):
             if i != puertaParticipante and i != puertaPresentador:
@@ -34,8 +41,8 @@ def montyHallImpriendo(changeDoor):
 
     if puertas[puertaParticipante] == "Auto":
         return "El participante ha ganado el auto"
-    
     return "El participante ha perdido"
+
 
 def montyHall(changeDoor):
     
@@ -63,8 +70,4 @@ def montyHall(changeDoor):
 
     if puertas[puertaParticipante] == "Auto":
         return True
-    
     return False
-
-
-    
